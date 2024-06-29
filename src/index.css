@@ -9,6 +9,9 @@
   --primary-dark: #931616;
   --primary-light: #ec4242;
   --main-color: #000;
+  --secondary: #ffff00;
+  --secondary-dark: #cccc01;
+  --secondary-light: #f9f935;
 }
 
 @layer base {
@@ -32,16 +35,20 @@
     @apply bg-[var(--primary)];
   }
 
+  .bg-secondary {
+    @apply bg-[var(--primary)];
+  }
+
   .border-primary {
     @apply border-[var(--primary)];
   }
 
   .btn-primary {
-    @apply inline-block px-8 py-4 bg-[var(--primary)] rounded font-medium text-xl text-white hover:bg-[var(--primary-dark)] ease-in duration-300;
+    @apply inline-block px-8 py-3 bg-[var(--primary)] rounded font-medium text-lg text-white hover:bg-[var(--primary-dark)] ease-in duration-300;
   }
 
   .btn-secondary {
-    @apply inline-block px-6 py-4 bg-[var(--secondary)] rounded font-medium text-xl text-white hover:bg-[var(--secondary-dark)] ease-in duration-300;
+    @apply inline-block px-8 py-3 bg-[var(--secondary)] rounded font-medium text-xl text-black hover:bg-[var(--secondary-dark)] ease-in duration-300;
   }
 
   .nav-link {
@@ -51,14 +58,25 @@
   .text-primary {
     @apply text-[var(--primary)];
   }
+
+  .text-secondary {
+    @apply text-[var(--secondary)];
+  }
 }
-.swiper-button-prev {
-  left: -20px !important;
+
+@media screen(md) {
+  @layer base {
+    .btn-primary .btn-primary {
+      @apply inline-block px-8 py-4 bg-[var(--primary)] rounded font-medium text-xl text-white hover:bg-[var(--primary-dark)] ease-in duration-300;
+    }
+  }
 }
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  font-size: 1.5rem !important;
+
+.reviews .swiper-wrapper {
+}
+
+.reviews .swiper-button-prev:after,
+.reviews .swiper-button-next:after {
+  font-size: 1.5rem;
   color: var(--primary);
-}
-.swiper-wrapper {
 }

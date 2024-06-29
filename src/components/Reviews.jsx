@@ -1,7 +1,14 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import {
+  Autoplay,
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+} from "swiper/modules";
 import { FaStar } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 // Import Swiper styles
 import "swiper/css";
@@ -40,30 +47,36 @@ const reviews = [
 ];
 const Reviews = () => {
   return (
-    <section className="" id="reviews">
+    <section className="reviews" id="reviews">
       <div className="max-w-[1140px] py-20 px-8 m-auto">
         <div className="py-20">
-          <div>
-            <h3 className="med-section-title text-white mb-3 text-left">
-              Reviews
-            </h3>
-            <h1 className="section-title text-primary text-left">
-              What Our Happy Clients Say
-            </h1>
-          </div>
+          <motion.div
+            initial={{ x: -300, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.3 }}
+          >
+            <div>
+              <h3 className="med-section-title text-white mb-3 text-left">
+                Reviews
+              </h3>
+              <h1 className="section-title text-primary text-left">
+                What Our Happy Clients Say
+              </h1>
+            </div>
+          </motion.div>
           <Swiper
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
             spaceBetween={30}
             slidesPerView={3}
-            navigation
             loop={true}
+            navigation={true}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
             autoplay={{
-              delay: 2500,
+              delay: 3000,
               disableOnInteraction: true,
             }}
-            className="mySwiper w-full h-[250px] mt-10 px-10"
+            className="w-full h-[250px] mt-10 px-10"
           >
             {reviews.map((review) => (
               <SwiperSlide className="w-[400px]  border border-primary px-8 py-4 rounded-xl text-white">
@@ -76,7 +89,7 @@ const Reviews = () => {
                     />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span className="text-white text-xl font-medium">
+                    <span className="text-300 text-xl font-medium">
                       {review.name}
                     </span>
                     <span className="text-slate-500 text-normal font-medium">
@@ -85,14 +98,14 @@ const Reviews = () => {
                   </div>
                 </div>
                 <div className="mt-3">
-                  <div className="mb-3 flex gap-2">
+                  <div className="mb-3 flex gap-1">
                     <FaStar size={15} color="yellow" />
                     <FaStar size={15} color="yellow" />
                     <FaStar size={15} color="yellow" />
                     <FaStar size={15} color="yellow" />
                     <FaStar size={15} color="yellow" />
                   </div>
-                  <p className="text-white text-md text-justify">
+                  <p className="text-slate-300 text-md text-justify">
                     {review.text}
                   </p>
                 </div>
